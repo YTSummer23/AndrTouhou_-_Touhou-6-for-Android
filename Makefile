@@ -21,5 +21,5 @@ debug:
 	g++ $(TARGET).o -g -o $(TARGET) -L$(SFML_PATH)/lib -pthread -lsfml-graphics -lsfml-window -lsfml-system -lsfml-network -lsfml-audio
 	rm $(TARGET).o
 
-installLibs:
+installLibs: #need for nothing, if you installed SFML in a standard path. Anyway, it is useless, since you should write this in console yourself
 	export LD_LIBRARY_PATH=$(SFML_PATH)/lib:$(LD_LIBRARY_PATH)
