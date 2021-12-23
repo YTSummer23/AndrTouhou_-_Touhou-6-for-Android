@@ -1,0 +1,6 @@
+1. Make debug info output to window, not console. Except keyPressed number.
+2. Fix movement of character. In different zones of window it moves with different speed. 
+3. Make enemies move via script.
+4. Make bullets exist and move.
+5. Make music play.
+6.
