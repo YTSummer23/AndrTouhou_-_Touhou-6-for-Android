@@ -7,6 +7,7 @@
 
 sf::RenderWindow window;
 std::string pathsOfT[(AofT - 1)] = { "data/player00_rgba.png" };
+const int AofS[1] = {24};
 
 bool createWindow()
 {
@@ -26,14 +27,7 @@ void setTextures(sf::Texture* textures[])
 
 sf::Sprite* setSprites(sf::Texture* texture, int k1)
 {
-	int AofS;//amount of sprites
-	switch (k1)
-	{
-		case 0://reimu texture and sprites
-			AofS=(23 + 1);//1 stands for NULL :) NULL IS MY LIFE!!! NUUULL!!! (Like minecraft, but NULL)
-			break;
-	}
-	sf::Sprite* sprite = new sf::Sprite [AofS];
+	sf::Sprite* sprite = new sf::Sprite [AofS[k1]];
 	for(int k=0; k < (AofS-1); ++k)
 	{
 		sprite[k].setTexture((*texture));
