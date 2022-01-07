@@ -6,8 +6,11 @@ std::mutex inputMutex;
 bool isExit = false;
 unsigned char input;
 float *xyP;//'P' stands for player
-const int AofT = 2; // AofT - amount of textures. The last element should be always null
 float* gameTime;
+//const vars
+const int AofT = 2; // AofT - amount of textures. The last element should be always null
+const int AofS[(AofT - 1)] = { 24 };//AofS - amount of sprites
+const std::string pathsOfT[(AofT - 1)] = { "data/player00_rgba.png" };
 
 #ifdef _WIN32
 #include "include/SFMLgraph.hpp"
