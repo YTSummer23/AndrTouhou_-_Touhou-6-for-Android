@@ -2,17 +2,19 @@
 #define SFML_GRAPH_HPP
 
 #include <SFML/Graphics.hpp>
-#include <string>
 #include <mutex>
 
 sf::RenderWindow window;
-std::string pathsOfT[(AofT - 1)] = { "data/player00_rgba.png" };
-const unsigned char AofS[1] = {24};
+sf::Font font;
+sf::Text text, textInfo;
 
 bool createWindow()
 {
 	window.create(sf::VideoMode(800, 600), "Touhou 6");
 	window.setVerticalSyncEnabled(1);
+	font.loadFromFile("fonts/Miratrix.ttf");
+	text.setFont(font);textInfo.setFont(font);
+	text.setText("input:\nxyP:\ngameTime:\n");
 	return window.isOpen();
 }
 
@@ -36,6 +38,14 @@ sf::Sprite* setSprites(sf::Texture* texture, int k1)
 	return sprite;
 }
 
+#ifdef DEBUG
+//function for displaying debug information
+void debugInfo()
+{
+	
+}
+#endif
+
 void windowDisplay(sf::Sprite* sprites[]/* *coordNeededToDisplay*/)
 {
         window.clear(sf::Color::Blue);
@@ -46,6 +56,9 @@ void windowDisplay(sf::Sprite* sprites[]/* *coordNeededToDisplay*/)
 			window.draw(sprites[k][j]);
 		}
 	}*/
+#ifdef DEBUG
+	debugInfo();
+#endif
 	window.draw(sprites[0][0]);
         window.display();
 }
@@ -90,5 +103,6 @@ void windowLoop(sf::Sprite* sprites[]/* void (Game::*exit)() *coordNeededToDispl
 		windowDisplay(sprites);
 	}
 }
+
 
 #endif
