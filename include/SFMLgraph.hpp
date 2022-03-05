@@ -3,10 +3,13 @@
 
 #include <SFML/Graphics.hpp>
 #include <mutex>
+#include <string>
+#include <sstream>
 
 sf::RenderWindow window;
 sf::Font font;
 sf::Text text, textInfo;
+std::ostringstream ss;
 
 bool createWindow()
 {
@@ -14,7 +17,8 @@ bool createWindow()
 	window.setVerticalSyncEnabled(1);
 	font.loadFromFile("fonts/Miratrix.ttf");
 	text.setFont(font);textInfo.setFont(font);
-	text.setText("input:\nxyP:\ngameTime:\n");
+	textInfo.setPosition(500, 0);
+	text.setString("input:\nxyP:\ngameTime:\n");
 	return window.isOpen();
 }
 
@@ -38,13 +42,14 @@ sf::Sprite* setSprites(sf::Texture* texture, int k1)
 	return sprite;
 }
 
-#ifdef DEBUG
 //function for displaying debug information
 void debugInfo()
 {
-	
+	ss.str("");
+	ss << unsigned(input) << "\n" << *xyP << "\t" << *(xyP +1) << "\n" << *gameTime;
+	textInfo.setString(ss.str());
+	window.draw(text); window.draw(textInfo);
 }
-#endif
 
 void windowDisplay(sf::Sprite* sprites[]/* *coordNeededToDisplay*/)
 {
@@ -56,11 +61,9 @@ void windowDisplay(sf::Sprite* sprites[]/* *coordNeededToDisplay*/)
 			window.draw(sprites[k][j]);
 		}
 	}*/
-#ifdef DEBUG
 	debugInfo();
-#endif
 	window.draw(sprites[0][0]);
-        window.display();
+	window.display();
 }
 
 unsigned char getKeys()
