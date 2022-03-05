@@ -1,5 +1,7 @@
-Make debug info output to window, not console. Except keyPressed number.
+(Completed) Make debug info output to window, not console. Except keyPressed number.
 Fix movement of character. In different zones of window it moves with different speed.
+Also, use another time function than SFML one. Or figure out whether I wrongly used it.
+Fix diagonal movement speed.
 
 Make const arrays instead of switchs.
 Do something to mutexes(maybe delete it?). And do normal threads synchronization
