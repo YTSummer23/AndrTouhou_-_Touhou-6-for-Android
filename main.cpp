@@ -2,15 +2,7 @@
 std::mutex aMutex;
 std::mutex inputMutex;
 
-//global variables. they need for thread "chatting"
-bool isExit = false;
-unsigned char input;
-float *xyP;//'P' stands for player
-float* gameTime;
-//const variabless
-const int AofT = 2; // AofT - amount of textures. The last element should be always null
-const int AofS[(AofT - 1)] = { 24 };//AofS - amount of sprites
-const std::string pathsOfT[(AofT - 1)] = { "data/player00_rgba.png" };
+#include <globals.hpp>
 
 #ifdef _WIN32
 #include "include/SFMLgraph.hpp"
@@ -36,8 +28,6 @@ int main()
 	using std::cin;
 	using std::thread;
 	using std::endl;
-//--------------------------------------------
-	gameTime = new float;
 //--------------------------------------------
 	thread threadGame(theGame);
 //--------------------------------------------
