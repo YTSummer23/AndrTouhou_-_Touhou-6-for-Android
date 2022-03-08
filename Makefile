@@ -1,18 +1,29 @@
-TARGET = main
+TARGET := main
+SRC_DIR := src
+SRC := playerEngine.cpp globals.cpp
+OBJ := $(SRC:%.cpp=%.o)
+SRC := $(addprefix $(SRC_DIR)/, $(SRC))
+CXXFLAGS = -pthread -lsfml-graphics -lsfml-window -lsfml-system -lsfml-network -lsfml-audio
 
-.PHONY: all clean installLibs debug
+.PHONY: all clean install uninstall debug print
 
-all: target
+
+all: $(TARGET)
 
 clean:
-	rm -rf $(TARGET)
+	rm -rf *.o
 
-target: 
+$(OBJ):
+	g++ -c $(TARGET).cpp $(SRC) -Iinclude/
+
+print:
+	echo $(SRC)
+	echo $(OBJ)
+
+$(TARGET): $(OBJ)
 	echo "compiling and assembling sources"
-	g++ -c $(TARGET).cpp
+	g++ $(TARGET).o $(OBJ) -o $(TARGET) $(CXXFLAGS)
 	echo "linking sources"
-	g++ $(TARGET).o -o $(TARGET) -pthread -lsfml-graphics -lsfml-window -lsfml-system -lsfml-network -lsfml-audio
-	rm $(TARGET).o
 
 debug:
 	echo "compiling and assembling sources"
@@ -21,5 +32,5 @@ debug:
 	g++ $(TARGET).o -g -o $(TARGET) -L$(SFML_PATH)/lib -pthread -lsfml-graphics -lsfml-window -lsfml-system -lsfml-network -lsfml-audio
 	rm $(TARGET).o
 
-installLibs: #need for nothing, if you installed SFML in a standard path. Anyway, it is useless, since you should write this in console yourself
+installLibs:
 	export LD_LIBRARY_PATH=$(SFML_PATH)/lib:$(LD_LIBRARY_PATH)
