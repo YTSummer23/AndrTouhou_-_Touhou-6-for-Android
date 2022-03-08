@@ -1,6 +1,6 @@
 TARGET := main
 SRC_DIR := src
-SRC := playerEngine.cpp globals.cpp
+SRC := menu.cpp enemyEngine.cpp SFMLgraph.cpp gameEngine.cpp levelEngine.cpp playerEngine.cpp globals.cpp
 OBJ := $(SRC:%.cpp=%.o)
 SRC := $(addprefix $(SRC_DIR)/, $(SRC))
 CXXFLAGS = -pthread -lsfml-graphics -lsfml-window -lsfml-system -lsfml-network -lsfml-audio
@@ -13,7 +13,7 @@ all: $(TARGET)
 clean:
 	rm -rf *.o
 
-$(OBJ):
+$(OBJ): $(SRC)
 	g++ -c $(TARGET).cpp $(SRC) -Iinclude/
 
 print:
