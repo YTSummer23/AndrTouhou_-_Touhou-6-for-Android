@@ -3,7 +3,7 @@ Fix movement of character. In different zones of window it moves with different 
 Also, use another time function than SFML one. Or figure out whether I wrongly used it.
 Fix diagonal movement speed.
 
-Split hpp files to hpp and cpp like in other normal C/C++ projects. I. e. to use hpp only for declaration, and cpp for definitons.
+(Completed)Split hpp files to hpp and cpp like in other normal C/C++ projects. I. e. to use hpp only for declaration, and cpp for definitons.
 Make const arrays instead of switchs.
 Do something to mutexes(maybe delete it?). And do normal threads synchronization
 Find where I can use Enums.
