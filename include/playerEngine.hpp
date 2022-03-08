@@ -20,34 +20,4 @@ private:
 	const float speed = 0.005f, focusSpeed = 0.0025f;//temporary variables
 };
 
-Player::Player(unsigned char lives1, unsigned char bombs1, unsigned char power1)
-{
-	point = 0;
-	graze = 0;
-	lives = lives1;
-	bombs = bombs1;
-	power = power1;
-	xy[0]=0;xy[1]=0;
-	xyP = xy;
-}
-
-float* Player::move(unsigned char &direction)//direction: 0b00001 - up, 0b00010 - down, 0b00100 - right, 0b01000 - left, 0b10000 - focused
-{
-	if(! (input & FOCUSED) ) 
-	{
-		xy[0] += speed*((RIGHT&input)>>2)*(*gameTime);
-		xy[0] -= speed*((LEFT&input)>>3)*(*gameTime);
-		xy[1] += speed*((DOWN&input)>>1)*(*gameTime);
-		xy[1] -= speed*(UP&input)*(*gameTime);
-	} 
-	else
-	{
-		xy[0] += focusSpeed*((RIGHT&input)>>2)*(*gameTime);
-		xy[0] -= focusSpeed*((LEFT&input)>>3)*(*gameTime);
-		xy[1] += focusSpeed*((DOWN&input)>>1)*(*gameTime);
-		xy[1] -= focusSpeed*(UP&input)*(*gameTime);
-	}
-	return xy;
-}
-
 #endif

@@ -1,6 +1,8 @@
 #ifndef GAME_ENGINE_HPP
 #define GAME_ENGINE_HPP
 
+#include <globals.hpp>
+
 /*#ifdef _WIN32
 #include "SFMLgraph.hpp"
 #endif
@@ -10,10 +12,7 @@
 
 /*the game has two stages: menu and levels.
 Menu is menu... And score screen beetwen levels.
-Levels are levels...*/
-#include "levelEngine.hpp"
-#include "menu.hpp"
-#include <iostream>
+Levels are levels... menu's header and level's one is included in cpp file*/
 
 class Game
 {
@@ -25,16 +24,5 @@ public:
 private:
 	//unsigned char input;
 };
-
-void Game::gameLoop()
-{
-	Level level;
-	while(!isExit)
-	{
-		level.levelLoop(&input);
-	}
-	//saveGame();
-	isExit=false;
-}
 
 #endif
