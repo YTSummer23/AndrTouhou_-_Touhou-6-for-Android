@@ -1,7 +1,3 @@
-#include <mutex>
-std::mutex aMutex;
-std::mutex inputMutex;
-
 #include <globals.hpp>
 
 #ifdef _WIN32
