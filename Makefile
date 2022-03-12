@@ -14,7 +14,7 @@ clean:
 	rm -rf *.o
 
 $(OBJ): $(SRC)
-	g++ -c $(TARGET).cpp $(SRC) -Iinclude/
+	clang++ -c $(TARGET).cpp $(SRC) -Iinclude/
 
 print:
 	echo $(SRC)
@@ -22,7 +22,7 @@ print:
 
 $(TARGET): $(OBJ)
 	echo "compiling and assembling sources"
-	g++ $(TARGET).o $(OBJ) -o $(TARGET) $(CXXFLAGS)
+	clang++ $(TARGET).o $(OBJ) -o $(TARGET) $(CXXFLAGS)
 	echo "linking sources"
 
 debug:
