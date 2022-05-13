@@ -6,10 +6,6 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/System.hpp>
 
-extern sf::RenderWindow window;
-extern sf::Font font;
-extern sf::Text text, textInfo;
-
 bool createWindow();
 
 void setTextures(sf::Texture* textures[]);

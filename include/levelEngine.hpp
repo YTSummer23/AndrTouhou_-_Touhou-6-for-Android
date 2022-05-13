@@ -9,7 +9,7 @@ class Level
 {
 public:
 	Level();
-	void levelLoop(unsigned char*);// like game loop, but level loop.
+	void levelLoop();// like game loop, but level loop.
 private:
 	unsigned char numberOfLevel;
 	Player* player = NULL;

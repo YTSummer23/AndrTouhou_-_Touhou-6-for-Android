@@ -7,8 +7,12 @@
 //global variables, they are neede for thread chatting
 extern bool isExit;
 extern unsigned char input;
-extern float *xyP;
-extern float *gameTime;
+extern bool mainLoopS, sfmlLoopS;//loop semaphors are needed for synchronization SFML loop and game loop
+extern struct gameCoord {
+    float x;
+    float y;
+} xyP;
+extern float gameTime;
 extern std::mutex inputMutex;
 //const vars
 const int AofT = 2;//AofT - amount of textures. The last element should be always null

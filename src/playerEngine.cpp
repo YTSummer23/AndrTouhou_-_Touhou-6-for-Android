@@ -8,25 +8,25 @@ Player::Player(unsigned char lives1, unsigned char bombs1, unsigned char power1)
     lives = lives1;
     bombs = bombs1;
     power = power1;
-    xy[0]=0;xy[1]=0;
+    xy.x=0;xy.y=0;
     xyP = xy;
 }
 
-float* Player::move(unsigned char &direction)
+gameCoord Player::move()
 {
     if(! (input & FOCUSED) )
     {
-        xy[0] += speed*((RIGHT&input)>>2)*(*gameTime);
-        xy[0] -= speed*((LEFT&input)>>3)*(*gameTime);
-        xy[1] += speed*((DOWN&input)>>1)*(*gameTime);
-        xy[1] -= speed*(UP&input)*(*gameTime);
+        xy.x += speed*((RIGHT&input)>>2)*(gameTime);
+        xy.x -= speed*((LEFT&input)>>3)*(gameTime);
+        xy.y += speed*((DOWN&input)>>1)*(gameTime);
+        xy.y -= speed*(UP&input)*(gameTime);
     }
     else
     {
-        xy[0] += focusSpeed*((RIGHT&input)>>2)*(*gameTime);
-        xy[0] -= focusSpeed*((LEFT&input)>>3)*(*gameTime);
-        xy[1] += focusSpeed*((DOWN&input)>>1)*(*gameTime);
-        xy[1] -= focusSpeed*(UP&input)*(*gameTime);
+        xy.x += focusSpeed*((RIGHT&input)>>2)*(gameTime);
+        xy.x -= focusSpeed*((LEFT&input)>>3)*(gameTime);
+        xy.y += focusSpeed*((DOWN&input)>>1)*(gameTime);
+        xy.y -= focusSpeed*(UP&input)*(gameTime);
     }
     return xy;
 }

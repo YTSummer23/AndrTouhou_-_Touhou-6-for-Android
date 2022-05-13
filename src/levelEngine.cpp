@@ -6,19 +6,29 @@
 
 #include <levelEngine.hpp>
 
+struct coord {
+    float x;
+    float y;
+} returned_xy;
+
 Level::Level()
 {
     player = new Player(0, 0, 0);
 }
-void Level::levelLoop(unsigned char *direction)
+void Level::levelLoop()
 {
     sf::Clock clock;
     while(!isExit)
     {
-        *gameTime = (clock.restart()).asSeconds();
-        inputMutex.lock();
-        xyP = player->move(*direction);//change xyP later to array of sprite's coords
-        inputMutex.unlock();
+	//mainLoopS = true;
+        gameTime = (clock.restart()).asSeconds();
+        //inputMutex.lock();
+        xyP = player->move();//change xyP later to array of sprite's coords
+        //inputMutex.unlock();
+	//mainLoopS= false;
+	//while(sfmlLoopS){}
+	//mainLoopS = false;
     }
+    //mainLoopS = false;
 }
 

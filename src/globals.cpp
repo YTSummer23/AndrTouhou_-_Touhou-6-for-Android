@@ -1,7 +1,8 @@
 #include <globals.hpp>
 
 bool isExit = false;
-float *xyP = new float;
-float *gameTime = new float;
+gameCoord xyP;
+float gameTime = 0;
 unsigned char input = 0;
 std::mutex inputMutex;
+bool mainLoopS, sfmlLoopS;

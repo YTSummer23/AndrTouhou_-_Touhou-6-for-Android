@@ -9,7 +9,7 @@ void Game::gameLoop()
     Level level;
     while(!isExit)
     {
-        level.levelLoop(&input);
+        level.levelLoop();
     }
     //saveGame();
     isExit=false;

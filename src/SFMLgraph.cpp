@@ -50,7 +50,7 @@ sf::Sprite* setSprites(sf::Texture* texture, int k1)
 void debugInfo()
 {
     ss.str("");
-    ss << unsigned(input) << "\n" << *xyP << "\t" << *(xyP +1) << "\n" << *gameTime;
+    ss << unsigned(input) << "\n" << xyP.x << "\t" << xyP.y << "\n" << gameTime;
     textInfo.setString(ss.str());
     window.draw(text); window.draw(textInfo);
 }
@@ -92,6 +92,7 @@ void windowLoop(sf::Sprite* sprites[]/* void (Game::*exit)() *coordNeededToDispl
     //sf::Clock clock;
     while (window.isOpen())
     {
+	sfmlLoopS = true;
         //*gameTime = (clock.restart()).asSeconds();
         sf::Event event;
         while (window.pollEvent(event))
@@ -99,16 +100,21 @@ void windowLoop(sf::Sprite* sprites[]/* void (Game::*exit)() *coordNeededToDispl
                 if (event.type == sf::Event::Closed)
             {
                 isExit = true;
+		        sfmlLoopS = false;
                 while(isExit)
                 { }
                 window.close();
             }
         }
-        inputMutex.lock();
+        //inputMutex.lock();
         input = getKeys();
-        inputMutex.unlock();
-        sprites[0][0].setPosition(xyP[0], xyP[1]);
+        //inputMutex.unlock();
+        sprites[0][0].setPosition(xyP.x, xyP.y);
         windowDisplay(sprites);
+	//sfmlLoopS = false;
+	//while(mainLoopS) {}
+	//sfmlLoopS = false;
     }
+    //sfmlLoopS = false;
 }
 
